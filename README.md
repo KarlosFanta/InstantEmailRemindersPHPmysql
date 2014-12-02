@@ -12,10 +12,14 @@ Setting it up though means creating a task schedule on Windows that fires sendEv
 
 The installation manual has not been created yet, so knowledge of PHP can be useful!!!
 
-Hopefully by July 2015 this project will look better becasue currently it's just meant to work. never mind how!!
-my apologees for some horrendous code used.
+Hopefully by July 2015 this project will look better but it works for now. i use it everyday.
+Set your PHP-mySQL server (eg wamp) to automatically start inside windows Services.
 
-it uses 3 tables: once off instant reminders, daily reminders and weekly reminders.
+Schedule the follinwg task:
+(Call it reminders) Triggers: Daily At 01:17 Pm every day -After triggered repeat every 5 minutes
+Action: start a program: C:\wamp\www\ACSevents\runSendReminder.vbs
+
+It uses 3 tables: once off instant reminders, daily reminders and weekly reminders.
 So it's actually quite user friendly.
 All MySQL statements are shown so that it is easy to understand and can be quickly modified for any application.
 
