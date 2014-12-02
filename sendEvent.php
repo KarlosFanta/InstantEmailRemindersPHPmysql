@@ -7,6 +7,7 @@ include "Fiveminutesbug.php"; // Windows Task Scheduler only fires every 5 minut
 //Set up the task scheduler to fire every 5 minutes.
 //Then adjust the code eg you set it up 1:17pm . so it fires agin 1:22pm
 //So now you can have either a 2 or a 7 at the end of the saved Reminder date.
+//Hopefully i have some spare time soon to replace/remove/improve this code.
 
 
 require_once('header.php');
