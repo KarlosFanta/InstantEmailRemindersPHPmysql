@@ -51,7 +51,6 @@
 			<li class=""><a href="http://localhost/phpmyadmin/sql.php?db=remsdb" target = "_blank">WAMP PHPMyAdmin</a></li>
 			
 			
-			<br>
 			<br><br>
 			<br>
 
@@ -59,7 +58,7 @@
 			<a href="./1.php" target = "_blank">SQL check</a></li>
 			<!--<li class=""><a href="./tables.php" target = "_blank">Show all tables</a></li>-->
 			<a href="./SQlCreateTables_TRANSACTIONAL DATABASE.txt" target = "_blank">SQL database code</a></li>
-				<li class=""><a href="../phpMyEdit-5.7.1/phpMyEditSetup.php" target=_blank>phpMyEditSetup</a></li>
+			
 
 			<a href="./1111home.php">Home</a></li>
 
@@ -75,11 +74,7 @@
 	</td><!--write above here-->
 	<td align="left" valign="top">
 	
-	<?php //include ("ajax/Demo/demo.php"); 
-//include ("calculator/index.php"); 
 
-
-?>
 <!--<body background="try14.php">-->
 	
 	
