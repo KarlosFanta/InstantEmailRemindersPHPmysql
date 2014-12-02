@@ -10,7 +10,7 @@
 <option value="_no_selection_">Select Table</option>";
 <?php
  
- require_once("inc_OnlineStoreDB.php");
+ require_once("DBcode.php");
  
  $query1 = "SHOW TABLES";
 echo $query1;
