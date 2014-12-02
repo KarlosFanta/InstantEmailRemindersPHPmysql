@@ -3,9 +3,10 @@
 date_default_timezone_set('Africa/Harare'); //change this to your location to get the correct time.
 $TimeNow =  date('H:i');
 
-include "Fiveminutesbug.php"; //Well, Windows Task Scheduler only fires every 5 minutes so I used this code to adjust.
-//Well guess what you will have to figure it out and yes you will have to adjust it according to how you schedule it.
-//Set up the task scheduler to fire every 5 minutes. Good luck
+include "Fiveminutesbug.php"; // Windows Task Scheduler only fires every 5 minutes so I used this code to adjust.
+//Set up the task scheduler to fire every 5 minutes.
+//Then adjust the code eg you set it up 1:17pm . so it fires agin 1:22pm
+//So now you can have either a 2 or a 7 at the end of the saved Reminder date.
 
 
 require_once('header.php');
