@@ -1,0 +1,94 @@
+-- http://www.phpmyadmin.net
+--
+-- Generation Time: Dec 02, 2014 at 05:34 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `remsdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dailyevents`
+--
+
+CREATE TABLE IF NOT EXISTS `dailyevents` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `RemSubj` varchar(255) NOT NULL DEFAULT '',
+  `RemBody` text,
+  `Time1` varchar(5) NOT NULL,
+  `Email` varchar(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reminder_id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+--
+-- Dumping data for table `dailyevents`
+--
+
+INSERT INTO `dailyevents` (`id`, `RemSubj`, `RemBody`, `Time1`, `Email`) VALUES
+(1, 'Water Garden', 'Water Garden', '09:02', 'N'),
+(2, 'Check calendar', 'Check todays menu on your calendar', '09:02', 'N'),
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventst`
+--
+
+CREATE TABLE IF NOT EXISTS `eventst` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `RemSubj` varchar(255) NOT NULL DEFAULT '',
+  `RemBody` text,
+  `Time1` varchar(5) NOT NULL,
+  `Sent` varchar(4) NOT NULL,
+  `RemDate` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reminder_id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `eventst`
+--
+
+INSERT INTO `eventst` (`id`, `RemSubj`, `RemBody`, `Time1`, `Sent`, `RemDate`) VALUES
+(13, 'meeting', 'meeting in town', '18:02', '', '2014-12-03'),
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weeklyevents`
+--
+
+CREATE TABLE IF NOT EXISTS `weeklyevents` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `RemSubj` varchar(255) NOT NULL DEFAULT '',
+  `RemBody` text,
+  `Time1` varchar(5) NOT NULL,
+  `WeekDay` varchar(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reminder_id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `weeklyevents`
+--
+
+INSERT INTO `weeklyevents` (`id`, `RemSubj`, `RemBody`, `Time1`, `WeekDay`) VALUES
+(8, 'Run a Backup every Saturday', '', '15:02', '6'),
+(9, 'Interview this Thursday', 'YNOT', '16:02', '4'),
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
