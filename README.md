@@ -23,3 +23,4 @@ So it's actually quite user friendly.
 All MySQL statements are shown so that it is easy to understand and can be quickly modified for any application.
 
 
+Credit goes to: phpMyEdit and http://www.devarticles.com/c/a/MySQL/Setup-Your-Personal-Reminder-System-Using-PHP/1/
