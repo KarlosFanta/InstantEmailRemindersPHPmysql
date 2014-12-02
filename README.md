@@ -15,7 +15,7 @@ The installation manual has not been created yet, so knowledge of PHP can be use
 Hopefully by July 2015 this project will look better but it works for now. i use it everyday.
 Set your PHP-mySQL server (eg wamp) to automatically start inside windows Services.
 
-Schedule the follinwg task:
+Schedule the following task:
 (Call it reminders) Triggers: Daily At 01:17 Pm every day -After triggered repeat every 5 minutes
 Action: start a program: C:\wamp\www\ACSevents\runSendReminder.vbs
 
