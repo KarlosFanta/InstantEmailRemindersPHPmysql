@@ -9,7 +9,7 @@ include "Fiveminutesbug.php"; //Well, Windows Task Scheduler only fires every 5 
 
 
 require_once('header.php');
-include('database.inc.php'); // Our database connectivity file
+include('DBcode.php'); // Our database connectivity file
 // Values you need set
 $to = "myEmAIL@whatever.com";  ///Put in your own personal email here for example gmail or yahoo
 $reminderDetails = "";
