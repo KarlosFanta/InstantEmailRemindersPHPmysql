@@ -1,6 +1,6 @@
 
 <?php
- require_once("inc_OnlineStoreDB.php");
+ require_once("DBcode.php");
  require_once("header.php");
 date_default_timezone_set('Africa/Harare');
 echo "<br><b>5min bug<br>CHange last digit of Time1 to a 7 </b>";
