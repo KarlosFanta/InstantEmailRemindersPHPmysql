@@ -19,11 +19,15 @@ echo "<br>The Time now : ".$timenow."<br>";
 
 $id = '';
 
-echo "<br>Happening right now:";
+echo "<br>Happening right now: ";
 
-$query = "SELECT * FROM eventsT WHERE RemDate = '$trigger_date' AND Time1 = '$timenow' ORDER BY RemDate ASC";
-echo $query;
+$query = "SELECT * FROM eventsOnceOff WHERE RemDate = '$trigger_date' AND Time1 = '$timenow' ORDER BY RemDate ASC";
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
 if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>id</th>";
 echo "<th>Event</th>";
@@ -32,7 +36,6 @@ echo "<th>Date</th>";
 echo "<th>Time1</th>";
 echo "<th>Sent</th>";
 echo "</tr>\n";
-
 while ($row = mysqli_fetch_assoc($result)) {
 echo "<tr>";
 $id = $row["id"];
@@ -55,14 +58,17 @@ echo "</tr>\n";
 mysqli_free_result($result);
 echo "</table>";
 }
-else
-echo "<BR><BR><BR>nothing now<BR>";
+}
+echo "<BR>";
 
-
-
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 $query = "SELECT * FROM dailyevents WHERE Time1 = '$timenow' ORDER BY RemSubj ASC";
-echo $query;
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
 if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>id</th>";
 echo "<th>Event</th>";
@@ -84,19 +90,23 @@ echo "</tr>\n";
 mysqli_free_result($result);
 echo "</table>";
 }
-else
-echo "<BR><BR><BR>nothing now<BR>";
+}
 
 
 
 
 
 $WeekDay = date("N");
-echo "WeekDay:", $WeekDay;
-
+echo "<br>WeekDay:", $WeekDay;
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 $query = "SELECT * FROM weeklyevents WHERE WeekDay = '$WeekDay' AND Time1 = '$timenow'";
-echo $query;
+
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
 if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
 echo "<table width='10' border='1'>\n";
 echo "<TR><th>id</TH>";
 echo "<th>Event</th>";
@@ -119,14 +129,97 @@ echo "</tr>\n";
 mysqli_free_result($result);
 echo "</table>";
 }
+}
 
 
-echo "<br>More events coming up today:";
 
+$MonthDay = date("j");
+echo "<br>MonthDay:", $MonthDay;
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+$query = "SELECT * FROM monthlyevents WHERE MonthDay = '$MonthDay' AND Time1 = '$timenow'";
 
-$query = "SELECT * FROM eventsT WHERE RemDate = '$trigger_date' AND Sent = '' ORDER BY Time1 ASC";
-echo $query;
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
 if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
+echo "<table width='10' border='1'>\n";
+echo "<TR><th>id</TH>";
+echo "<th>Event</th>";
+echo "<th>Details</th>";
+echo "<th>Time1</th>";
+echo "<th>MonthDay</th>";
+///echo "<th>Sent</th>";
+echo "</tr>\n";
+
+while ($row = mysqli_fetch_assoc($result)) {
+echo "<tr>";
+$id = $row["id"];
+echo "<th>".$row["id"]."</th>";
+echo "<th>".$row["RemSubj"]."</th>";
+echo "<th><font size = 5>".$row["RemBody"]."</font></th>";
+echo "<th>".$row["Time1"]."</th>";
+echo "<th>".$row["MonthDay"]."</th>";
+echo "</tr>\n";
+}
+mysqli_free_result($result);
+echo "</table>";
+}
+}
+
+
+//yearlyevents:
+$MonthDay = date("n"); //same as today or dayNumeric representation of a month, without leading zeros 	1 through 12
+echo "<br>MonthDay:", $MonthDay;
+$day = date("j");
+
+echo "<br>Day:", $day;//day of the month
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+$query = "SELECT * FROM yearlyevents WHERE Month = '$MonthDay' AND Day = '$day'";
+
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
+if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
+echo "<table width='10' border='1'>\n";
+echo "<TR><th>id</TH>";
+echo "<th>Event</th>";
+echo "<th>Yearly Event</th>";
+echo "<th></th>";
+echo "<th></th>";
+///echo "<th>Sent</th>";
+echo "</tr>\n";
+
+while ($row = mysqli_fetch_assoc($result)) {
+echo "<tr>";
+$id = $row["id"];
+echo "<th>".$row["id"]."</th>";
+echo "<th>".$row["RemSubj"]."</th>";
+echo "<th><font size = 5>".$row["RemBody"]."</font></th>";
+echo "<th>".$row["Time1"]."</th>";
+echo "<th>".$row["Day"].".".$row["Month"].".$year</th>";
+echo "</tr>\n";
+}
+mysqli_free_result($result);
+echo "</table>";
+}
+}
+
+
+
+echo "<br>More once off events coming up: ";
+
+$query = "SELECT * FROM eventsOnceOff where Sent != 'Sent'";
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
+if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
+
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>id</th>";
 echo "<th>Event</th>";
@@ -158,17 +251,21 @@ echo "</tr>\n";
 mysqli_free_result($result);
 echo "</table>";
 }
-else
-echo "no more events today";
+}
 
 
 
-echo "<br>Events you missed out on:";
+echo "<br>Events you missed out on: ";
+echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 
-$query = "SELECT * FROM eventsT WHERE RemDate <= '$trigger_date' AND Sent = '' ORDER BY RemDate ASC";
-echo $query;
+$query = "SELECT * FROM eventsOnceOff WHERE RemDate <= '$trigger_date' AND Sent = '' ORDER BY RemDate ASC";
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
 if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
 echo "<table width='10' border='1'>\n";
 echo "<tr><th>id</th>";
 echo "<th>Event</th>";
@@ -200,14 +297,17 @@ echo "</tr>\n";
 mysqli_free_result($result);
 echo "</table>";
 }
-else
-echo "nothing missed out on";
+}
 
 
-echo "upcoming weekly events for today:";
+echo "<br>Upcoming weekly events for today: ";
 $query = "SELECT * FROM weeklyevents WHERE WeekDay = '$WeekDay' AND Time1 > '$timenow'";
-echo $query;
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
 if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
 echo "<table width='10' border='1'>\n";
 echo "<TR><th>id</TH>";
 echo "<th>Event</th>";
@@ -231,9 +331,69 @@ echo "</tr>\n";
 mysqli_free_result($result);
 echo "</table>";
 }
+}
+
+echo "<br>Upcoming monthly events for today: ";
+$query = "SELECT * FROM monthlyevents WHERE MonthDay = '$MonthDay' AND Time1 > '$timenow'";
+echo "<textarea style='width: 300px; height: 20px;' >".$query."</textarea>";
+
+if ($result = mysqli_query($DBConnect, $query)) {
+$row_cnt = mysqli_num_rows($result);
+if ( $row_cnt > 0)
+{
+echo "<table width='10' border='1'>\n";
+echo "<TR><th>id</TH>";
+echo "<th>Event</th>";
+echo "<th>Details</th>";
+echo "<th>MonthDay</th>";
+echo "<th>Time1</th>";
+//echo "<th>Sent</th>";
+echo "</tr>\n";
+
+while ($row = mysqli_fetch_assoc($result)) {
+echo "<tr>";
+$id = $row["id"];
+echo "<th>".$row["id"]."</th>";
+echo "<th>".$row["RemSubj"]."</th>";
+echo "<th><font size = 5>".$row["RemBody"]."</font></th>";
+echo "<th>".$row["MonthDay"]."</th>";
+echo "<th>".$row["Time1"]."</th>";
+//echo "<th>".$row["Sent"]."</th>";
+echo "</tr>\n";
+}
+mysqli_free_result($result);
+echo "</table>";
+}
+}
 
 
+?>
+<table width="90%" border="0" align="center">
 
+<?php
+$query = "select * from dailyevents order by Time1";
+//echo $query;
+if ($result = mysqli_query($DBConnect, $query)) {
+echo "<table width='10' border='1'>\n";
+echo "<tr><th>id</th>";
+echo "<th>Subj</th>";
+echo "<th>Email</th>";
+echo "<th>desc</th>";
+echo "<th>date</th>";
+echo "</tr>\n";
 
+while ($row = mysqli_fetch_assoc($result)) {
+echo "<tr>";
+echo "<th>".$row["id"]."</th>";//CustNo is case senSitiVe
+echo "<th>".$row["RemSubj"]."</th>";//CustNo is case senSitiVe
+echo "<th>".$row["RemBody"]."</th>";//CustFN is case senSitiVe
+echo "<th>".$row["Email"]."</th>";//CustLN is case senSitiVe
+echo "<th>".$row["Time1"]."</th>";//CustLN is case senSitiVe
+//echo "<th>".$row["Sent"]."</th>";//CustLN is case senSitiVe
+//echo "<th>".$row["id"]."</th>";//CustLN is case senSitiVe
+echo "</tr>\n";
 
+}
+mysqli_free_result($result);
+}
 ?>
