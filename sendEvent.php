@@ -27,7 +27,7 @@ echo "<br>timenow : ".$timenow."<br>";
 $id = '';
 
 
-$query = "SELECT * FROM eventsT WHERE RemDate <= $TrigDate AND Sent = '' ORDER BY RemDate ASC";
+$query = "SELECT * FROM eventsOnceOff WHERE RemDate <= $TrigDate AND Sent = '' ORDER BY RemDate ASC";
 //this shows today's stuff and all previous stuff that has not been marked as Sent.
 //$query = "SELECT * FROM eventsT WHERE  Sent = '' ORDER BY RemDate ASC";
 echo $query;
