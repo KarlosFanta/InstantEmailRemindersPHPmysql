@@ -1,0 +1,38 @@
+<p>Code manual for ACS Events</p>
+
+<p>Create Task “remin” inside Task Scheduler: <br>
+Run when user is logged in,<br>
+Begin the task “On a schedule”<br>
+daily: Recur every 1 days<br>
+Repeat task every 5 minutes  indefinitely<br>
+Enabled<br>
+Actions: Start a program: C:\wamp\www\ACSevents\runSendReminder.vbs<br>
+<br>
+the code inside the vbs file launches runSR.bat:<br>
+This one launches PHP and sendEvent.php:</p>
+
+<p>NB sendEvent.php gets run in the background (and not in
+Chrome)</p>
+
+<p>Fiveminutesbug.php  Changes last digit of Time1 to a 7</p>
+
+<p>Display Right now’s event from eventsOnceOff table</p>
+
+<p>sendEvent.php also launches mark.php:</p>
+
+<p>it updates some reminder as sent</p>
+
+<p>launches dailyReminders.php</p>
+
+<p>launches weekyReminders.php</p>
+
+<p>&nbsp;</p>
+
+<p>mark.php also launches message.bat which launches Chrome and
+message.php</p>
+
+
+
+</body>
+
+</html>
