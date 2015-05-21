@@ -12,6 +12,8 @@ date_default_timezone_set('Africa/Harare');
 
 include "dailyReminders.php";
 include "weeklyReminders.php";
+include "monthlyReminders.php";
+include "yearlyReminders.php";
 
 
 echo "<br><b>the following will be marked as Sent now:<br></b>";
@@ -20,7 +22,7 @@ echo  date('H:i');
 $TimeNow =  date('H:i');
 echo  "<br><br>";
 
-$queryM = "SELECT * FROM eventsT WHERE RemDate <= '$trigger_date' AND Sent = '' AND Time1 = '$TimeNow' ORDER BY RemDate ASC";
+$queryM = "SELECT * FROM eventsOnceOff WHERE RemDate <= '$trigger_date' AND Sent = '' AND Time1 = '$TimeNow' ORDER BY RemDate ASC";
 echo $queryM;
 $rowcount = 0;
 if ($resultM = mysqli_query($DBConnect, $queryM)) {
@@ -76,8 +78,8 @@ else
 
 
 
-//$queryM2 = "SELECT * FROM eventsT WHERE RemDate <= '$trigger_date' AND Sent = '' AND Time1 <= '$TimeNow' ";
-$queryMUPD = "UPDATE eventsT SET Sent = 'Sent'  WHERE  RemDate <= '$trigger_date' AND Sent = '' AND Time1 <= '$TimeNow'";
+//$queryM2 = "SELECT * FROM eventsOnceOff WHERE RemDate <= '$trigger_date' AND Sent = '' AND Time1 <= '$TimeNow' ";
+$queryMUPD = "UPDATE eventsOnceOff SET Sent = 'Sent'  WHERE  RemDate <= '$trigger_date' AND Sent = '' AND Time1 <= '$TimeNow'";
 echo "<br>".$queryMUPD;
 if (mysqli_query($DBConnect, $queryMUPD) === TRUE) {   
 
