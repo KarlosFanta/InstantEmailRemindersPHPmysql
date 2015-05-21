@@ -41,16 +41,20 @@
 			<div class="menubg flt">
 		<ul class="menu flt">
 
+			<a href="events1.php">Add a once off Reminder</a><br />
 			<a href="events1.php">events1.php</a><br />
 			<a href="viewRemallD.php">daily events</a><br />
 			<a href="viewRemallW.php">weekly events</a><br />
-			<a href="events1.php">Add a once off Reminder</a><br />
+			<a href="viewRemallM.php">monthly events</a><br />
+			<a href="viewRemallY.php">yearly events</a><br />
 
 			
+			<a href="./message.php">message.php</a></li><br />
 			<a href="./sendEvent.php">sendEvent.php</a></li><br />
 			<li class=""><a href="http://localhost/phpmyadmin/sql.php?db=remsdb" target = "_blank">WAMP PHPMyAdmin</a></li>
 			
 			
+			<br>
 			<br><br>
 			<br>
 
@@ -58,7 +62,7 @@
 			<a href="./1.php" target = "_blank">SQL check</a></li>
 			<!--<li class=""><a href="./tables.php" target = "_blank">Show all tables</a></li>-->
 			<a href="./SQlCreateTables_TRANSACTIONAL DATABASE.txt" target = "_blank">SQL database code</a></li>
-			
+				<li class=""><a href="../phpMyEdit-5.7.1/phpMyEditSetup.php" target=_blank>phpMyEditSetup</a></li>
 
 			<a href="./1111home.php">Home</a></li>
 
@@ -73,12 +77,4 @@
 	
 	</td><!--write above here-->
 	<td align="left" valign="top">
-	
-
-<!--<body background="try14.php">-->
-	
-	
-	<!--</td>DO NOT ENABLE-->
-	<!--</table>DO NOT ENABLE-->
-	
 	
