@@ -1,6 +1,9 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Generation Time: Dec 02, 2014 at 05:34 PM
+-- Host: 127.0.0.1
+-- Generation Time: May 21, 2015 at 08:31 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -16,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `remsdb`
 --
+CREATE DATABASE IF NOT EXISTS `remsdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `remsdb`;
 
 -- --------------------------------------------------------
 
@@ -31,23 +36,15 @@ CREATE TABLE IF NOT EXISTS `dailyevents` (
   `Email` varchar(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `reminder_id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
-
---
--- Dumping data for table `dailyevents`
---
-
-INSERT INTO `dailyevents` (`id`, `RemSubj`, `RemBody`, `Time1`, `Email`) VALUES
-(1, 'Water Garden', 'Water Garden', '09:02', 'N'),
-(2, 'Check calendar', 'Check todays menu on your calendar', '09:02', 'N'),
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eventst`
+-- Table structure for table `eventsonceoff`
 --
 
-CREATE TABLE IF NOT EXISTS `eventst` (
+CREATE TABLE IF NOT EXISTS `eventsonceoff` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `RemSubj` varchar(255) NOT NULL DEFAULT '',
   `RemBody` text,
@@ -56,14 +53,24 @@ CREATE TABLE IF NOT EXISTS `eventst` (
   `RemDate` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `reminder_id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `eventst`
+-- Table structure for table `monthlyevents`
 --
 
-INSERT INTO `eventst` (`id`, `RemSubj`, `RemBody`, `Time1`, `Sent`, `RemDate`) VALUES
-(13, 'meeting', 'meeting in town', '18:02', '', '2014-12-03'),
+CREATE TABLE IF NOT EXISTS `monthlyevents` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `RemSubj` varchar(255) NOT NULL DEFAULT '',
+  `RemBody` text,
+  `Time1` varchar(5) NOT NULL,
+  `MonthDay` varchar(2) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reminder_id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 -- --------------------------------------------------------
 
@@ -79,15 +86,25 @@ CREATE TABLE IF NOT EXISTS `weeklyevents` (
   `WeekDay` varchar(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `reminder_id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `weeklyevents`
+-- Table structure for table `yearlyevents`
 --
 
-INSERT INTO `weeklyevents` (`id`, `RemSubj`, `RemBody`, `Time1`, `WeekDay`) VALUES
-(8, 'Run a Backup every Saturday', '', '15:02', '6'),
-(9, 'Interview this Thursday', 'YNOT', '16:02', '4'),
+CREATE TABLE IF NOT EXISTS `yearlyevents` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `RemSubj` varchar(255) NOT NULL DEFAULT '',
+  `RemBody` text,
+  `Time1` varchar(5) NOT NULL,
+  `Day` varchar(2) NOT NULL,
+  `Month` int(2) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reminder_id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
